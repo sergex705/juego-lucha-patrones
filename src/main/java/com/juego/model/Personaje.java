@@ -1,44 +1,29 @@
 package com.juego.model;
 
-import java.util.Random;
+import com.juego.patrones.strategy.AtaqueStrategy;
 
 public class Personaje {
     private String nombre;
-    private int puntosDeVida;
-    private static final int MAX_DANO = 30;
-    private static final int MIN_DANO = 10;
-    private final Random rand;
+    private int vida;
+    // Este es el "enchufe" para la estrategia
+    private AtaqueStrategy estrategiaAtaque;
 
-    public Personaje(String nombre) {
+    public Personaje(String nombre, int vida, AtaqueStrategy estrategia) {
         this.nombre = nombre;
-        this.puntosDeVida = 100;
-        this.rand = new Random();
+        this.vida = vida;
+        this.estrategiaAtaque = estrategia;
     }
 
-    public void atacar(Personaje oponente) {
-        int dano = rand.nextInt(MAX_DANO - MIN_DANO + 1) + MIN_DANO;
-        oponente.recibirDano(dano);
-        System.out.println(this.nombre + " ataca a " + oponente.getNombre() +
-                           " causando " + dano + " puntos de daño.");
+    // Método para cambiar la estrategia en tiempo de ejecución (ej: cambiar de arma o estilo)
+    public void setEstrategiaAtaque(AtaqueStrategy estrategiaAtaque) {
+        this.estrategiaAtaque = estrategiaAtaque;
     }
 
-    public void recibirDano(int dano) {
-        if (dano < 0) return;
-        this.puntosDeVida -= dano;
-        if (this.puntosDeVida < 0) {
-            this.puntosDeVida = 0;
-        }
+    public int realizarAtaque() {
+        // Aquí ocurre la magia: ya no hay números fijos (10-30), 
+        // ahora delegamos al objeto estrategia
+        return estrategiaAtaque.calcularDanio();
     }
 
-    public boolean estaVivo() {
-        return this.puntosDeVida > 0;
-    }
-
-    public String getNombre() {
-        return this.nombre;
-    }
-
-    public int getPuntosDeVida() {
-        return this.puntosDeVida;
-    }
+    // Getters y Setters...
 }

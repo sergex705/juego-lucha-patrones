@@ -1,1 +1,5 @@
 /workspaces/juego-lucha-patrones/src/main/java/com/juego/model/Personaje.java
+/workspaces/juego-lucha-patrones/src/main/java/com/juego/patrones/factory/PersonajeFactory.java
+/workspaces/juego-lucha-patrones/src/main/java/com/juego/patrones/strategy/AtaqueBasico.java
+/workspaces/juego-lucha-patrones/src/main/java/com/juego/patrones/strategy/AtaqueFuerte.java
+/workspaces/juego-lucha-patrones/src/main/java/com/juego/patrones/strategy/AtaqueStrategy.java

@@ -1,1 +1,5 @@
 com/juego/model/Personaje.class
+com/juego/patrones/strategy/AtaqueStrategy.class
+com/juego/patrones/strategy/AtaqueFuerte.class
+com/juego/patrones/strategy/AtaqueBasico.class
+com/juego/patrones/factory/PersonajeFactory.class
